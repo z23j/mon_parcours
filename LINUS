@@ -1,0 +1,18 @@
+SELECT "title" FROM "episodes" WHERE "season"=1;
+SELECT "title","season" FROM "episodes" WHERE "season"=1;
+SELECT "title" FROM "episodes" WHERE "title"="Hackerized!";
+SELECT "title" FROM "episodes" WHERE "topic" is NULL;
+SELECT "title" FROM "episodes" WHERE "air_date"="2004-12-31";
+SELECT "title" FROM "episodes" WHERE "season"=6 AND "air_date" LIKE "2007%";
+SELECT "title" FROM "episodes" WHERE "topic" LIKE "%fractions";
+SELECT COUNT (*) FROM "episodes" WHERE "air_date" BETWEEN "2018-01-01" AND "2023-12-31";
+SELECT COUNT (*) FROM "episodes" WHERE "air_date" BETWEEN "2002-01-01" AND "2007-12-31";
+SELECT "id","title", "production_code" FROM "episodes" ORDER BY "production_code" ASC;
+SELECT "title" FROM "episodes" WHERE "season"=5 ORDER BY "title" DESC;
+SELECT COUNT(DISTINCT "title") FROM "episodes";
+SELECT "title" FROM "episodes" WHERE "season"=3 AND "topic" LIKE "%and";
+SELECT "0m" FROM "normals" WHERE "latitude"=42.5 AND "longitude" =-69.5;
+SELECT "0m","100m","200m" FROM "normals" WHERE "latitude"=42.5 AND "longitude" =-69.5;
+SELECT ROUND(AVG("0m")2) AS "Moy Temp à l'équateur" FROM "normals" WHERE "latitude" BETWEEN -0.5 AND 0.5;
+SELECT "latitude", "longitude", "0m" FROM "normals" ORDER BY "0m" ASC,"latitude"ASC LIMIT 10;
+SELECT "latitude", "longitude", "0m" FROM "normals" ORDER BY "0m" DESC,"latitude"ASC LIMIT 10;

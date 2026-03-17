@@ -1,0 +1,46 @@
+task main ()
+{
+//SetSensorLight(S1,SENSOR_LIGHT);
+
+SetSensorMode(S1,SENSOR_MODE_PERCENT);
+
+int maxLight ;
+int bestAngleStep ;
+
+int steps = 9;
+
+for(int i = 0; i< steps;i++)
+{
+        //Rotation
+        OnFwd(OUT_B,50);
+        OnRev(OUT_C,50);
+        Wait(300);
+        
+        Off(OUT_BC);
+        Wait(200);
+        
+        int light = Sensor(SENSOR_LIGHT);
+        
+        if(light > maxLight)
+        {
+                 maxLight = light;
+                 bestAngleStep = i;
+        }
+}
+
+for(int i = 0;i < bestAngleStep; i++)
+{
+        OnFwd(OUT_B,50);
+        OnRev(OUT_C,50);
+        Wait(300);
+}
+
+ClearScreen();
+TextOut(0, LCD_LINE1, "Max lumiere:");
+NumOut(0, LCD_LINE2, maxLight);
+
+//Avance
+OnFwdSync(OUT_BC,70,0);
+Wait(2000);
+Off(OUT_BC);
+}
